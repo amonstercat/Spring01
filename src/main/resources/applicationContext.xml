@@ -1,0 +1,21 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans xmlns="http://www.springframework.org/schema/beans"
+       xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+       xsi:schemaLocation="http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans.xsd">
+<bean id="hello" class="com.lzc.entity.Hello">
+    <!-- id为bean对象的唯一标识 不能重复   class为bean对象的类型-->
+</bean>
+<!--   bean的作用域为单例singleton:获取ioc容器时xml文件中单例属性的bean都已经放入ioc容器了
+         bean的作用域为多例prototype:只有在获取相对应的bean时才会创建对应的实例
+-->
+    <bean id="stu" class="com.lzc.entity.Student" init-method="initMethod"
+          destroy-method="destroyMethod" scope="singleton">
+        <!--
+        property标签是通过组件类的setXXX()方法给组件对象设置属性
+        name指定的是属性名，该属性名由setXXX()方法确定，与成员变量无关
+        -->
+        <property name="age" value="25"/>
+        <property name="sex" value="male"/>
+        <property name="name" value="mbappe"/>
+    </bean>
+</beans>
